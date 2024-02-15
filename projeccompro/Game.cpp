@@ -13,6 +13,17 @@ void Game::initWindow()
 	this->videoMode.height = 600;
 	this->videoMode.width =  800;
 	this->window = new sf::RenderWindow(this->videoMode, "Love Game", sf::Style::Titlebar | sf::Style::Close);
+
+	this->window->setFramerateLimit(144);
+}
+
+void Game::initEnemies()
+{
+	//this->enemy.setPosition();
+	this->enemy.setSize(sf::Vector2f(10.f, 10.f));
+	this->enemy.setFillColor(sf::Color::Green);
+	this->enemy.setOutlineColor(sf::Color::Black);
+	this->enemy.setOutlineThickness(1.f);
 }
 
 
@@ -21,6 +32,7 @@ Game::Game()
 {
 	this->initVariables();
 	this->initWindow();
+	this->initEnemies();
 }
 
 
@@ -67,10 +79,20 @@ void Game::pollEvents()
 	}
 
 	void Game::rander()
+		/*
+			@return void
+
+		   -clear old frame
+		   -render new objects
+		   -display frame in window
+
+		   Render the game objects.
+		*/
 {
-		this->window->clear(sf::Color(25 , 25 , 255 , 255));
+		this->window->clear();
 
 		//Draw game objects
+		this->window->draw(this->enemy);
 
 		this->window->display();
 }

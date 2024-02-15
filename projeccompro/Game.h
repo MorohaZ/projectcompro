@@ -22,20 +22,25 @@ private:
 	sf::VideoMode videoMode;
 	sf::Event ev;
 
+	//Game objects
+	sf::RectangleShape enemy;
+
 	//Private functions
 	void initVariables();
 	void initWindow();
+	void initEnemies();
 public:
 	// Constructors / Destructors
 	Game();
 	virtual ~Game();
 
 	//Accessore
-	const bool getWindowIsOpen() const;
+	const bool running() const;
 
 
 
 	//Function
+	void pollEvents();
 	void updeta();
 	void rander();
 
