@@ -2,24 +2,37 @@
 
 
 //private function
-void game::intiVariables()
+void game::initVariables()
 {
 	this->window = nullptr;
 }
 
-void game::intiWindow()
+void game::initWindow()
 {
 	this->videoMode.width  = 800;
 	this->videoMode.height = 600;
 
 	this->window = new sf::RenderWindow(this->videoMode, "love game", sf::Style::Titlebar | sf::Style::Close);
+
+	this->window->setFramerateLimit(144);
+}
+
+void game::initEnemy()
+{
+	this->enemy.setPosition(10.f,10.f);
+	this->enemy.setSize(sf::Vector2f(100.f,100.f));
+	this->enemy.setScale(sf::Vector2f(0.5f, 0.5f));
+	this->enemy.setFillColor(sf::Color::Blue);
+	this->enemy.setOutlineColor(sf::Color::Green);
+	this->enemy.setOutlineThickness(1.f);
 }
 
 //constructors | Destructors
 game::game()
 {
-	this->intiVariables();
-	this->intiWindow();
+	this->initVariables();
+	this->initWindow();
+	this->initEnemy();
 }
 
 
@@ -76,6 +89,7 @@ void game::render()
 	this->window->clear();
 
 	//draw game objects
+	this->window->draw(this->enemy);
 
 	this->window->display();
 }

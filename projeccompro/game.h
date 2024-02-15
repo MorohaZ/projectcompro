@@ -21,10 +21,13 @@ private:
 	sf::VideoMode videoMode;
 	sf::Event ev;
 
-	//private function
-	void intiVariables();
-	void intiWindow();
+	//game objects
+	sf::RectangleShape enemy;
 
+	//private function
+	void initVariables();
+	void initWindow();
+	void initEnemy();
 public:
 	//constructors | Destructors
 	game();
