@@ -1,42 +1,24 @@
 #include<iostream>
 
-#include<SFML/Graphics.hpp>
-#include<SFML/System.hpp>
-#include<SFML/Window.hpp>
-#include<SFML/Audio.hpp>
-#include<SFML/Network.hpp>
+#include"game.h"
 
 int main()
-{	//window
-	sf::RenderWindow window(sf::VideoMode(800,600),"love game",sf::Style::Titlebar|sf::Style::Close);
-	sf::Event ev;
-	
+{	
+	//initgame engine
+	game Game;
 	//gameloop
-	while (window.isOpen())
+	while (Game.running())
 	{
-		//event polling
-		while (window.pollEvent(ev))
-		{
-			switch (ev.type)
-			{
-			case sf::Event::Closed:
-				window.close();
-				break;
-			case sf::Event::KeyPressed:
-				if (ev.key.code == sf::Keyboard::Escape)
-				{
-					window.close();
-				}
-				break;
-			}
-		}
-
-		//update
 		
 
+		//update
+		Game.update();
+
 		//render
-		window.clear();//clear old frame
-		window.display();//tell app that window is done drawing
+		Game.render(); //clear old frame
+		
+		//Draw your game
+		//window.display();//tell app that window is done drawing
 
 	}
 
